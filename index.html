@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La mulți aniiiiiiiiiiiiiiiii</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #d8b4f8, #f3e8ff);
+      color: #4a046e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(138, 43, 226, 0.2);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #6b21a8;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    button {
+      background-color: #c084fc;
+      color: white;
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: bounce 2s infinite;
+      display: inline-block;
+    }
+
+    button:hover {
+      background-color: #a855f7;
+      transform: scale(1.05);
+    }
+
+    img {
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .img-with-btn img {
+      width: 200px;
+    }
+
+    .gallery {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .top-row {
+      justify-content: center;
+    }
+
+    .bottom-row {
+      justify-content: center;
+      margin-top: -10px; /* pentru efect de piramidă */
+    }
+
+    .gallery-item img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(168, 85, 247, 0.25);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+      opacity: 0;
+    }
+
+    .show {
+      display: block;
+      animation: fadeSlideIn 1s forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 15px;
+      }
+      h1, h2 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 16px;
+      }
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+      .gallery-item img {
+        width: 130px;
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Laurici, apasă pe buton!!!</h1>
+    <p>miauuuu</p>
+
+    <button id="btn1">Apasă aici!</button>
+
+    <div id="msg1" class="hidden">
+      <p>mai încearcă</p>
+      <div class="img-with-btn">
+        <img src="images/poza1.jpg" alt="aici trebuia sa fie poza" />
+        <button id="btn2">Apasăăăăăăă</button>
+      </div>
+    </div>
+
+    <div id="msg2" class="hidden">
+      <p>upsssss</p>
+      <div class="img-with-btn">
+        <img src="images/poza3.jpg" alt="da unde e poza??" />
+        <button id="btn3">iar apasă (promit ca e ultima data)</button>
+      </div>
+    </div>
+
+    <div id="finalMsg" class="hidden">
+      <h2>🎉 La mulți ani!!!!!!!!🎉</h2>
+      <div class="gallery">
+        <div class="gallery-row top-row">
+          <div class="gallery-item"><img src="images/poza6.jpg" alt="poza 1" /></div>
+          <div class="gallery-item"><img src="images/poza2.jpg" alt="poza 2" /></div>
+          <div class="gallery-item"><img src="images/poza8.jpg" alt="poza 3" /></div>
+        </div>
+        <div class="gallery-row bottom-row">
+          <div class="gallery-item"><img src="images/poza7.jpg" alt="poza 4" /></div>
+          <div class="gallery-item"><img src="images/poza4.jpg" alt="poza 5" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function showSection(id, triggerConfetti = false) {
+      const el = document.getElementById(id);
+      el.classList.remove('hidden');
+      el.classList.add('show');
+
+      if (triggerConfetti) {
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      }
+    }
+
+    document.getElementById('btn1').addEventListener('click', () => {
+      showSection('msg1');
+    });
+
+    document.getElementById('btn2').addEventListener('click', () => {
+      showSection('msg2');
+    });
+
+    document.getElementById('btn3').addEventListener('click', () => {
+      showSection('finalMsg', true);
+    });
+  </script>
+</body>
+</html>
